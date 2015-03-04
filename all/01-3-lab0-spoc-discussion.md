@@ -45,12 +45,12 @@
 搭建好实验环境，请描述碰到的困难和解决的过程。
 - [x]  
 
-> 
+> 没有遇到问题。
 
 熟悉基本的git命令行操作命令，从github上的[ucore git repo](http://www.github.com/chyyuu/ucore_lab)下载ucore lab实验
 - [x]  
 
-> 
+> 已经将源代码下载。
 
 尝试用qemu+gdb（or ECLIPSE-CDT）调试lab1
 - [x]  
@@ -74,7 +74,7 @@ struct gatedesc {
 ```
 - [x]  
 
-> 
+> 位数。
 
 对于如下的代码段，
 ```
