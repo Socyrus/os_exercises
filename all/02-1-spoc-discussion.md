@@ -62,24 +62,24 @@
        sys_fork,  
        sys_wait,  
        sys_exec,  
-       sys_yield,  
-       sys_kill,  
-       sys_getpid,  
+       sys_yield,    
+       sys_kill,   
+       sys_getpid,    
        sys_lab6_set_priority,  
        sys_sleep,  
- >二、内存管理
-        sys_pgdir,
- >三、文件操作
-       sys_open,
-       sys_close,
-       sys_read,
-       sys_write,
-       sys_seek,
-       sys_fstat,
-       sys_fsync,
-       sys_getcwd,
-       sys_getdirentry,
-       sys_dup,
+ >二、内存管理  
+        sys_pgdir,  
+ >三、文件操作  
+       sys_open,  
+       sys_close,  
+       sys_read,  
+       sys_write,  
+       sys_seek,  
+       sys_fstat,  
+       sys_fsync,  
+       sys_getcwd,  
+       sys_getdirentry,  
+       sys_dup,  
  
 ## 3.4 linux系统调用分析
  1. 通过分析[lab1_ex0](https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab1/lab1-ex0.md)了解Linux应用的系统调用编写和含义。(w2l1)
