@@ -57,29 +57,30 @@
  
  >有22个系统调用
  >大致的功能分类有：  
- >一、进程管理
-       sys_exit,  
-       sys_fork,  
-       sys_wait,  
-       sys_exec,  
-       sys_yield,    
-       sys_kill,   
-       sys_getpid,    
-       sys_lab6_set_priority,  
-       sys_sleep,  
+ >一、进程管理  
+       sys_exit：退出进程。  
+       sys_fork：从原始进程中派出一个子进程。  
+       sys_wait：使进程进入等待状态。   
+       sys_exec：执行给定进程。  
+       sys_yield：使进程让出控制权。    
+       sys_kill：杀死给定进程。   
+       sys_getpid：获取进程id。    
+       sys_lab6_set_priority：设置进程优先级。  
+       sys_sleep：使进程进入休眠状态。  
  >二、内存管理  
-        sys_pgdir,  
+        sys_pgdir：获取页表信息。  
  >三、文件操作  
-       sys_open,  
-       sys_close,  
-       sys_read,  
-       sys_write,  
-       sys_seek,  
-       sys_fstat,  
-       sys_fsync,  
-       sys_getcwd,  
-       sys_getdirentry,  
-       sys_dup,  
+       sys_open：打开文件操作。 
+       sys_close：关闭给定文件。  
+       sys_read：从给定文件中读取数据。  
+       sys_write：向给定文件中写入数据。  
+       sys_seek：改变当前文件中的位置。  
+       sys_fstat：获取文件属性。  
+       sys_fsync：文件延迟写操作。  
+       sys_getcwd；获取当前目录。  
+       sys_getdirentry：获取目录信息。  
+       sys_dup：输入输出重定向。 
+ 
  
 ## 3.4 linux系统调用分析
  1. 通过分析[lab1_ex0](https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab1/lab1-ex0.md)了解Linux应用的系统调用编写和含义。(w2l1)
@@ -138,6 +139,8 @@
  -d,--debug  
  输出调试信息  
  
+ 系统调用的本质即为一组运行在操作系统内核中的一系列函数。这些函数是用户程序与操作系统之间的接口，提供了非常基本的功能。同时，系统调用均是在内核（trap）中实现，其最终均转换为一组汇编命令，相对于其他函数而言，系统调用的效率是非常高的。
+ 
  1. 通过调试[lab1_ex1](https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab1/lab1-ex1.md)了解Linux应用的系统调用执行过程。(w2l1)
  
 
@@ -147,7 +150,11 @@
   - 答案对上述两个要点中的某一个要点进行了正确阐述（1分）
   - 答案对上述两个要点进行了正确阐述（2分）
   - 答案除了对上述两个要点都进行了正确阐述外，还进行了扩展和更丰富的说明（3分）
+  
  ```
+ >strace 用于检查程序使用的系统调用
+    >它会输出所调用的系统调用、使用的时间的百分比、使用的时间、调用次数等信息。
+ >系统调用的执行过程如下：最开始时，用户程序调用c库函数（即API），之后c库函数会执行软中断指令INT 0x80，该条指令会让系统跳转至一个预设的内核空间地址，它指向系统调用处理程序，即system_call函数，此时已进入内核态。之后将执行系统调用服务例程，此时直接执行对应的汇编代码，最后回到用户态。
  
 ## 3.5 ucore系统调用分析
  1. ucore的系统调用中参数传递代码分析。
