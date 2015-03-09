@@ -116,27 +116,27 @@
 -V或--version：显示nm的版本号。  
 --help：显示nm的任选项。  
 
->file的作用:探测给定文件的类型  
->常用参数  
->--help  
-显示帮助信息  
--v,--version  
-输出版本信息并退出  
--b,--brief  
-不显示文件名字  
--f,--files-fromFILE  
-读取待测试的名称文件  
--F,--seperatorSTRING  
-使用字符串作为分隔符，不再使用“：”  
--i,--mime  
-显示文件的mime类型  
---mime-type  
---mime-encoding  
--L,--dereference  
-显示符号链接所指向文件信息  
--h,--no-dereference  
--d,--debug  
-输出调试信息  
+ >file的作用:探测给定文件的类型  
+ >常用参数  
+ >--help  
+ 显示帮助信息  
+ -v,--version  
+ 输出版本信息并退出  
+ -b,--brief  
+ 不显示文件名字  
+ -f,--files-fromFILE  
+ 读取待测试的名称文件  
+ -F,--seperatorSTRING  
+ 使用字符串作为分隔符，不再使用“：”  
+ -i,--mime  
+ 显示文件的mime类型  
+ --mime-type  
+ --mime-encoding  
+ -L,--dereference  
+ 显示符号链接所指向文件信息  
+ -h,--no-dereference  
+ -d,--debug  
+ 输出调试信息  
  
  1. 通过调试[lab1_ex1](https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab1/lab1-ex1.md)了解Linux应用的系统调用执行过程。(w2l1)
  
