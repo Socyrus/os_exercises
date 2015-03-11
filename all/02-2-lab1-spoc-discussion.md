@@ -55,7 +55,31 @@ lab1中的cprintf函数最终通过哪些外设完成了对字符串的输出？
 ---
 
 lab1中printfmt函数用到了可变参，请参考写一个小的linux应用程序，完成实现定义和调用一个可变参数的函数。(spoc)
-- [x]  
+
+>    #include<stdio.h>  
+>    #include<string.h>  
+>    #include<stdarg.h>  
+>
+>    void sum(int n, ...){  
+>        va_list args;  
+>        int sum=0;  
+>  
+>        va_start(args,n);  
+>        for (int i=0;i<n;i++){  
+>            sum+=va_arg(args,int);  
+>        }  
+>        va_end(args);  
+>  
+>        printf("%d\n",sum);  
+>
+>    }  
+>
+>    int main(){  
+>        sum(1,1);  
+>        sum(2,1,2);  
+>        sum(3,1,2,3);  
+>        return 0;  
+>    }  
 
 
 
