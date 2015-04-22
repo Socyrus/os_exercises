@@ -90,6 +90,12 @@ if options.solve == True:
         thetime = 0
         print 'Execution trace:'
 		#YOUR CODE
+        thetime = 0.0
+        print 'Execution trace:'
+        for job in joblist:
+            print('[ time %3.2f ] Run job %d for %3.2f secs ( DONE at %3.2f )' % (thetime, job[0], job[1],thetime+job[1]))
+            thetime += job[1]
+
 
         print '\nFinal statistics:'
         t     = 0.0
@@ -143,10 +149,13 @@ if options.solve == True:
             ranfor = 0
             if runtime > quantum:
 				#YOUR CODE
+                ranfor = quantum
+                runtime -= quantum
                 print '  [ time %3d ] Run job %3d for %.2f secs' % (thetime, jobnum, ranfor)
                 runlist.append([jobnum, runtime])
             else:
                 #YOUR CODE
+                ranfor = runtime
                 print '  [ time %3d ] Run job %3d for %.2f secs ( DONE at %.2f )' % (thetime, jobnum, ranfor, thetime + ranfor)
                 turnaround[jobnum] = thetime + ranfor
                 jobcount -= 1
