@@ -8,8 +8,8 @@ import random
 condition = threading.Condition()
 N = 2
 M = 3
-A = 0
-B = 0
+A = 0 #number of A
+B = 0 #number of B
 
 class AProducer(threading.Thread):
     def __init__(self):
