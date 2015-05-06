@@ -10,15 +10,15 @@ import time
 N=2
 M=3
 mutex = BoundedSemaphore()
-emptyA = BoundedSemaphore(N)
-emptyB = BoundedSemaphore(N)
-A = Semaphore(0)
-B = Semaphore(0)
+emptyA = BoundedSemaphore(N) #empty space for A
+emptyB = BoundedSemaphore(N) #empty space for B
+A = Semaphore(0) #Number of A
+B = Semaphore(0) #Number of B
 aNum=0
 bNum=0
 
-AQuotas = Semaphore(N)
-BQuotas = Semaphore(M)
+AQuotas = Semaphore(N) #semaphore to ensure A-B <=N
+BQuotas = Semaphore(M) #semaphore to ensure A-B >= -M
 
 class AProducer(threading.Thread):
     def __init__(self):
