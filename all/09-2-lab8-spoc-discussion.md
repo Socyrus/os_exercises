@@ -47,6 +47,208 @@
 
 1. (spoc) 理解文件访问的执行过程，即在ucore运行过程中通过`cprintf`函数来完整地展现出来读一个文件在ucore中的整个执行过程，(越全面细致越好)
 完成代码填写，并形成spoc练习报告，需写练习报告和简单编码，完成后放到git server 对应的git repo中
+```
+$ [sys_read]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+h[sys_read]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+e[sys_read]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+l[sys_read]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+l[sys_read]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+o[sys_read]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sys open arg :hello] 0
+[sysfile open]path: hello 1
+[file_open] 2
+[vfs open] 3 
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs_load_inode]
+[sfs_rbuf]
+[disk io]
+[vfs inode open] 4
+[sfs inode sfs_openfile] 5
+[sysfile open]path: hello 6
+[file_open] 7
+[vfs open] 8 
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs dirent read]
+[sfs_rbuf]
+[disk io]
+[sfs_load_inode]
+[sfs_rbuf]
+[disk io]
+[vfs inode open] 9
+[sfs inode sfs_openfile] 10
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[sfs_rbuf]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[sfs_rbuf]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[sfs_rbuf]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[sfs_rbuf]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[sfs_rbuf]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[sfs_rbuf]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[sfs_rbuf]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[sfs_rbuf]
+[disk io]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[sfs_rbuf]
+[disk io]
+[sys open arg :stdin:] 0
+[sysfile open]path: stdin: 1
+[file_open] 2
+[vfs open] 3 
+[vfs inode open] 4
+[sys open arg :stdout:] 0
+[sysfile open]path: stdout: 1
+[file_open] 2
+[vfs open] 3 
+[vfs inode open] 4
+Hello world!!.
+I am process 14.
+hello pass.
+$ [sys_read]
+[sysfile_read]
+[file_read]
+[vfs inode read]
+
+从上面的输出结果大概可以看出读文件过程
+首先我输入一个命令hello
+每输入一个字母都会执行 sys_read->sysfile_read->file_read->vfs_inode_read
+
+然后
+[sys open arg :hello] 0
+[sysfile open]path: hello 1
+[file_open] 2
+[vfs open] 3 
+[vfs inode open] 4
+[sfs inode sfs_openfile] 5
+从sycall 一直到 sfs_openfile 打开文件
+
+然后是从文件中读取数据
+[sysfile_read]
+[file_read]
+[vfs inode read]
+[sfs inode io]
+[disk io]
+按照文件系统->vfs->sfs->disk这样的顺序调用
+```
 
 2. （spoc） 在下面的实验代码的基础上，实现基于文件系统的pipe IPC机制
 
