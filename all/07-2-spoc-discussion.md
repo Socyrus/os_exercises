@@ -54,3 +54,4 @@ s.count--;              //有可用资源，占用该资源；
 
 第七题
 见warehouse-condition.py 和 warehouse-semaphore.py
+测试用例:warehouse-test.md
