@@ -100,6 +100,6 @@ TOTALS      Seek: 80  Rotate:655  Transfer:180  Total: 915
 ```
 ./disksim.py   -a 10,11,12,13，24,1
 
-
+在这里例子里，和SSTF磁盘调度策略一样
 ```
 请回答每个磁盘请求序列的IO访问时间
