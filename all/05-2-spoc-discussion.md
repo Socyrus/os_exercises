@@ -125,3 +125,4 @@ Time     PID: 0     PID: 1        CPU        IOs
  13     RUN:yld       DONE          1            
 ```
 code: 
+https://github.com/Socyrus/os_exercises/blob/master/all/process-simulation.py
